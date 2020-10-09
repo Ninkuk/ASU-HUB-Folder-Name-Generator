@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .code {
+            background-color: #292E33;
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+
+        .copy-btn {
+            font-size: small;
+            background-color: #1F2226;
+            padding: 5px 10px;
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .material-icons {
+            position: relative;
+            top: 5px;
+        }
+    </style>
+    <title>HUB File Name Generator</title>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row vh-100 m-0">
+            <div class="col-6 bg-light p-5">
+                <h2 class="font-weight-bold mb-3">HUB Folder/File Name Generator</h2>
+                <form class="border rounded p-5" id="form">
+                    <!-- Due Date -->
+                    <div class="mb-4">
+                        <label for="dueDate" class="form-label text-muted">Due Date</label>
+                        <input class="form-control" type="date" id="due-date" />
+                        <div class="form-text">*required</div>
+                    </div>
+                    <!-- Project Type -->
+                    <div class="mb-4">
+                        <label class="form-label text-muted">Project Type</label><br />
+                        <button type="button" class="btn btn-outline-warning w-25" id="university-btn"
+                            onclick="revealForm('uni')">
+                            Alumni
+                        </button>
+                        <button type="button" class="btn btn-outline-warning w-25" id="athletics-btn"
+                            onclick="revealForm('sport')">
+                            Athletics
+                        </button>
+                    </div>
+
+
+                    <div id="sportsContainer" style="display: none;">
+                        <!-- Sport Code -->
+                        <div class="mb-4">
+                            <label for="sport-code" class="form-label">Sport Code</label>
+                            <select class="form-select" id="sport-code"></select>
+                        </div>
+                        <!-- Project Name -->
+                        <div class="mb-4">
+                            <label for="project-name" class="form-label">Project Name</label>
+                            <input type="text" class="form-control" id="project-name-athletics"
+                                placeholder="Ticket Booklet">
+                        </div>
+                        <!-- Generate Button -->
+                        <button type="submit" class="btn btn-warning w-100" id="athletics-submit-btn">Generate</button>
+                    </div>
+
+                    <div id="uniContainer" style="display: none;">
+                        <!-- Campaign Name -->
+                        <div class="mb-4">
+                            <label for="campaign" class="form-label">Campaign</label>
+                            <input type="text" class="form-control" id="campaign-name" placeholder="Recent Grad">
+                        </div>
+                        <!-- Project Name -->
+                        <div class="mb-4">
+                            <label for="campaign" class="form-label">Project Name</label>
+                            <input type="text" class="form-control" id="project-name-alumni"
+                                placeholder="Grad Fair Medium Article">
+                        </div>
+                        <!-- Generate Button -->
+                        <button type="submit" class="btn btn-warning w-100" id="alumni-submit-btn">Generate</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6 bg-dark p-5 text-white">
+                <div id="result-container" style="display: none;">
+                    <h2 class="font-weight-bold mb-3">Result</h2>
+                    <div style="position: relative;">
+                        <p class="code m-0 font-monospace text-warning" id="result-text">200914 ASU Alumni</p>
+                        <p class="copy-btn m-0 text-light" id="copy-btn">copy</p>
+                    </div>
+
+                    <p class="mt-3" id="parent-folder">
+                        <span class="material-icons">
+                            folder_open
+                        </span>
+                        200914 ASU Alumni
+                    </p>
+                    <p class="ml-4" id="final-folder">
+                        <span class="material-icons">
+                            folder
+                        </span>
+                        200914 ASU Alumni FINAL
+                    </p>
+                    <p class="ml-4">
+                        <span class="material-icons">
+                            folder
+                        </span>
+                        Links
+                    </p>
+                    <p class="ml-4">
+                        <span class="material-icons">
+                            folder_open
+                        </span>
+                        Working Drafts
+                    </p>
+                    <p class="ml-5" id="v1-file">
+                        <span class="material-icons">
+                            description
+                        </span>
+                        200914 ASU Alumni V1.psd
+                    </p>
+                    <p class="ml-4" id="final-file">
+                        <span class="material-icons">
+                            description
+                        </span>
+                        200914 ASU Alumni FINAL.psd
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+    </script>
+    <script src="sport_codes.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
