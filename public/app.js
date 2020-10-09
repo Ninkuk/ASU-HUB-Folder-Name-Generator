@@ -121,9 +121,13 @@ form.addEventListener('submit', (e) => {
         }
     } else if (uniState) {
         if (validateAlumni()) {
-            console.log(dueDateInput.value);
+            let folderName = `${selectedDate} ASU Alumni ${campaignName} ${projectName}`;
             document.getElementById('result-container').style.display = 'block';
-            document.getElementById('result-text').innerText = `${selectedDate} ASU Alumni ${campaignName} ${projectName}`;
+            document.getElementById('result-text').innerText = folderName;
+            document.getElementById('parent-folder').innerHTML = '<span class="material-icons">folder_open</span>' + ' ' + folderName;
+            document.getElementById('final-folder').innerHTML = '<span class="material-icons">folder</span>' + ' ' + folderName + ' FINAL';
+            document.getElementById('v1-file').innerHTML = '<span class="material-icons">description</span>' + ' ' + folderName + ' V1.ext'
+            document.getElementById('final-file').innerHTML = '<span class="material-icons">description</span>' + ' ' + folderName + ' FINAL.ext'
         } else {
             document.getElementById('result-container').style.display = 'none';
         }
